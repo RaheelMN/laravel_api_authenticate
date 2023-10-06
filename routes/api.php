@@ -17,19 +17,26 @@ use App\Http\Controllers\ProductController;
 // Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-// Route::apiResource('products',ProductController::class);
+Route::apiResource('products',ProductController::class);
 
-Route::middleware(['auth:sanctum'])->group(function(){
+// Route::controller(ProductController::class)->group(function(){
+//     Route::get('/searchproducts/{key}','searchProducts');
+//     Route::apiResource('products',ProductController::class);
+// });   
 
-    //return user information
-    Route::get('/user', function (Request $request) {
-            return $request->user();});
+// Route::middleware(['auth:sanctum'])->group(function(){
 
-            //manage product table
-    Route::controller(ProductController::class)->group(function(){
-        Route::apiResource('products',ProductController::class);
-    });   
-});
+//     //return user information
+//     Route::get('/user', function (Request $request) {
+//             return $request->user();});
+
+//             //manage product table
+//     Route::apiResource('products',ProductController::class);
+
+//     Route::controller(ProductController::class)->group(function(){
+//         Route::get('/searchproducts/{key}','searchProducts');
+//     });   
+// });
 
 
 

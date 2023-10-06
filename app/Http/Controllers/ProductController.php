@@ -15,6 +15,8 @@ class ProductController extends Controller
     // }
 
     public function index(){
+        // $products = Product::query()->orderByDesc('id')->paginate(5);
+        // return response($products,200);
         return Product::all();
         // return SkillResource::collection(Skill::all());
         // return new SkillCollection(Skill::paginate(10));
@@ -57,15 +59,10 @@ class ProductController extends Controller
     }
 
 
-    public function searchProduct($key){
+    public function searchProducts($key){
+
         $result = Product::select('id','name','file_path','description','price')->where('name','like',"%{$key}%")->get();
         return $result;
-        // $result = Product::find($id);
-        // if($result){
-        //     return $result;
-        // }else{
-        //     return ['message'=>"Product doesnot exits"];
-        // }
     }     
 
 }
